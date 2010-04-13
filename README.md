@@ -1,5 +1,5 @@
 redis-retry
------------
+===========
 
 Requires the redis gem.
 
@@ -17,13 +17,13 @@ amount of time.
 
 
 Installation
-============
+------------
 
     $ gem install redis-retry
 
 
 Author
-=====
+------
 
 Matt Duncan
 matt@mattduncan.org
