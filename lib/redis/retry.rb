@@ -36,5 +36,11 @@ class Redis
       # Ran out of retries
       raise Errno::ECONNREFUSED
     end
+
+    def respond_to?(method)
+      return true if super(method)
+
+      @redis.respond_to?(method)
+    end
   end
 end

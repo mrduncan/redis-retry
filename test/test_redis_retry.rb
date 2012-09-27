@@ -44,4 +44,10 @@ class TestRedisRetry < Test::Unit::TestCase
     assert @redis['foo']
     assert @redis['bar']
   end
+
+  def test_respond_to
+    assert @redis.respond_to?(:tries)
+    assert @redis.respond_to?(:get)
+    assert !@redis.respond_to?(:method_that_does_not_exist)
+  end
 end
