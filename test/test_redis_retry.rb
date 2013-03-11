@@ -21,6 +21,11 @@ class TestRedisRetry < Test::Unit::TestCase
     assert @redis['foo']
   end
 
+  def test_should_retry_after_receiving_connection_reset
+    @r.stubs(:send).raises(Errno::ECONNRESET).then.returns(true)
+    assert @redis['foo']
+  end
+
   def test_should_retry_as_many_times_as_possible
     send = sequence('send')
     @r.stubs(:send).raises(Errno::ECONNREFUSED).times(9).in_sequence(send)
